@@ -225,6 +225,9 @@ def functionTest(String test_name, String label_name, String TEST_GROUP, Boolean
 }
 
 def triggerTestsParallely(TESTS, test_type, repo_dir, test_stack){
+    if(TESTS.length()==0 || TESTS == null){
+    return 
+    }
     def RUN_TESTS_DICT=[:]
     // TESTS is a checkbox parameter.
     // Its value is a string looks like:
