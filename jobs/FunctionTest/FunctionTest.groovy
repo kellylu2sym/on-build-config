@@ -225,7 +225,8 @@ def functionTest(String test_name, String label_name, String TEST_GROUP, Boolean
 }
 
 def triggerTestsParallely(TESTS, test_type, repo_dir, test_stack){
-    if(TESTS.length()==0 || TESTS == null){
+    if(TESTS == null || TESTS.length()==0){
+    echo "TESTS length is zero,no test need to run"
     return 
     }
     def RUN_TESTS_DICT=[:]
