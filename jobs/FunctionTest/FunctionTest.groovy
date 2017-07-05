@@ -229,7 +229,7 @@ def triggerTestsParallely(TESTS, test_type, repo_dir, test_stack){
     echo "TESTS length is zero,no test need to run"
     return 
     }
-    #echo TESTS
+    //echo TESTS
     def RUN_TESTS_DICT=[:]
     // TESTS is a checkbox parameter.
     // Its value is a string looks like:
