@@ -50,7 +50,7 @@ def buildPackage(String repo_dir){
     int retry_times = 3
     stage("Packages Build"){
         retry(retry_times){
-            load(repo_dir + "/jobs/build_debian/build_debian.groovy")
+            //load(repo_dir + "/jobs/build_debian/build_debian.groovy")
         }
     }
 }
@@ -162,7 +162,7 @@ def createTag(String repo_dir){
 }
 
 def buildAndPublish(Boolean publish, Boolean tag, String repo_dir){
-    //buildPackage(repo_dir)
+    buildPackage(repo_dir)
 
     buildImages(repo_dir)
 
