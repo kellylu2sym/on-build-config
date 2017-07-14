@@ -61,3 +61,18 @@ set -e
 
 docker-compose -f docker-compose-mini.yml up > $WORKSPACE/build-log/vagrant.log &
 popd
+
+mountpath="$WORKSPACE/RackHD/docker/files/mount"
+retrytimes=10
+while [ ! -d "$mountpath" ]
+do
+    echo "mount is not finished"
+    retrytimes=$(($retrytimes-1))
+    echo "check mount is successful , retry : $retrytimes times"
+    if [ $retrytimes -eq 0 ]; then
+        break
+        sleep 5
+done
+echo "change the authority of mount"
+echo $SUDO_PASSWORD |sudo -S chown -R $USER:$USER $WORKSPACE/RackHD
+
