@@ -162,7 +162,7 @@ def createTag(String repo_dir){
 }
 
 def buildAndPublish(Boolean publish, Boolean tag, String repo_dir){
-    buildPackage(repo_dir)
+    //buildPackage(repo_dir)
 
     buildImages(repo_dir)
 
