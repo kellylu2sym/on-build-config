@@ -52,8 +52,8 @@ def generateTestBranches(function_test){
                                         }
                                         env.BUILD_CONFIG_DIR = "build-config"
                                         echo "Checkout RackHD for un-src test."
-                                        def url = "https://github.com/RackHD/RackHD.git"
-                                        def branch = "master"
+                                        def url = "https://github.com/kellylu2sym/RackHD.git"
+                                        def branch = "testyml"
                                         def targetDir = "RackHD"
                                         env.RackHD_DIR = targetDir
                                         shareMethod.checkout(url, branch, targetDir)
