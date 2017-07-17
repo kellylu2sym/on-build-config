@@ -72,6 +72,7 @@ do
     if [ $retrytimes -eq 0 ]; then
         break
         sleep 5
+    fi
 done
 echo "change the authority of mount"
 echo $SUDO_PASSWORD |sudo -S chown -R $USER:$USER $WORKSPACE/RackHD
