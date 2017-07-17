@@ -68,10 +68,10 @@ while [ ! -d "$mountpath" ]
 do
     echo "mount is not finished"
     retrytimes=$(($retrytimes-1))
-    echo "check mount is successful , retry : $retrytimes times"
+    echo "retry : $retrytimes times"
+    sleep 10
     if [ $retrytimes -eq 0 ]; then
         break
-        sleep 10
     fi
 done
 echo "change the authority of mount"
