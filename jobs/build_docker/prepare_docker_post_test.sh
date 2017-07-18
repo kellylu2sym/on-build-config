@@ -62,7 +62,10 @@ set -e
 docker-compose -f docker-compose-mini.yml up > $WORKSPACE/build-log/vagrant.log &
 popd
 
-mountpath="$WORKSPACE/RackHD/docker/files/mount"
+#common folder is the most deep folder mounted from docker
+#make sure all folder is created (all mount opreation is done),then change the authority
+#check the most deep folder in docker-compose-mini.yml
+mountpath="$WORKSPACE/RackHD/docker/files/mount/common"
 retrytimes=20
 while [ ! -d "$mountpath" ]
 do
@@ -74,6 +77,9 @@ do
         break
     fi
 done
-echo "change the authority of mount"
-echo $SUDO_PASSWORD |sudo -S chown -R $USER:$USER $WORKSPACE/RackHD
 
+if [ -d "$mounthpath" ]
+
+    echo "change the authority of RackHD"
+    echo $SUDO_PASSWORD |sudo -S chown -R $USER:$USER $WORKSPACE/RackHD
+fi
