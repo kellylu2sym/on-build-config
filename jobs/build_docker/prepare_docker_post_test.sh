@@ -78,7 +78,7 @@ do
     fi
 done
 
-if [ -d "$mounthpath" ]
+if [ -d "$mounthpath" ]; then
 
     echo "change the authority of RackHD"
     echo $SUDO_PASSWORD |sudo -S chown -R $USER:$USER $WORKSPACE/RackHD
