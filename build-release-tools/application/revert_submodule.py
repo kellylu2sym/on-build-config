@@ -127,7 +127,7 @@ def main():
                 if submodules_list is None:
                     continue
                 #git pull is used to get the lastest code to make sure push successfully
-                test_info = repo_operator.git_pull(repo_dir,'origin','master')
+                test_info = repo_operator.git_pull(repo_dir,'origin','last_submodule')
                 print "git pull"
                 time.sleep(10)
                 revert_commit_for_submodules_update(repo_dir,repo_operator,args.version)
