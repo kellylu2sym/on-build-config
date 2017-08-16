@@ -16,7 +16,7 @@ def submodule(String operation)
         }
     
         withCredentials([
-            usernameColonPassword(credentialsId: 'GITHUB_USER_PASSWORD_OF_JENKINSRHD_KELLY',
+            usernameColonPassword(credentialsId: 'JENKINSRHD_GITHUB_CREDS_KELLY',
                                   variable: 'JENKINSRHD_GITHUB_CREDS'),
             usernamePassword(credentialsId: 'a94afe79-82f5-495a-877c-183567c51e0b', 
                              passwordVariable: 'BINTRAY_API_KEY', 
