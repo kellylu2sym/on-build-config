@@ -6,12 +6,12 @@
         {
             "branch": "last_submodule", 
             "commit-id": "f86ad49b604960e799fe5643c2202009120a6989", 
-            "repository": "https://github.com/RackHD/on-core.git"
+            "repository": "https://github.com/kellylu2sym/on-core.git"
         }, 
         {
             "branch": "last_submodule", 
             "commit-id": "c1914182f5499c24bc04544562716dd49f2ed1e0", 
-            "repository": "https://github.com/RackHD/RackHD.git"
+            "repository": "https://github.com/kellylu2sym/RackHD.git"
         } 
     ]
 }
