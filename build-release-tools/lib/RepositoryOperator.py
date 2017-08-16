@@ -671,7 +671,8 @@ class RepoOperator(object):
         :param repo_dir: the directory of the repository
         :return: None
         """
-         
+        print repo_name
+        print branch_name 
         if repo_dir is None or not os.path.isdir(repo_dir):
             raise RuntimeError("The repository directory {0} is not specified. or its format is wrong".format(repo_dir))
         return_code, output, error = self.git.run(['pull',repo_name, branch_name], directory=repo_dir)
@@ -679,6 +680,8 @@ class RepoOperator(object):
         if return_code == 0:
             return output.strip()
         else:
+            print error
+            print output.strip()
             raise RuntimeError("Unable to git pull {0},error is {1}".format(repo_dir,error))
     def git_log(self ,repo_dir):
         """
