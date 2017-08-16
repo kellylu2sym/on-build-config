@@ -665,7 +665,7 @@ class RepoOperator(object):
             return output.strip()
         else:
             raise RuntimeError("Unable to update the submodule of {0}".format(repo_dir))
-    def git_pull(self,repo_diri,repo_name,branch_name):
+    def git_pull(self,repo_dir,repo_name,branch_name):
         """
         update the reposioty to latest commit and make sure the coming change will push successfully
         :param repo_dir: the directory of the repository
