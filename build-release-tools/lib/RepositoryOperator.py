@@ -674,7 +674,7 @@ class RepoOperator(object):
          
         if repo_dir is None or not os.path.isdir(repo_dir):
             raise RuntimeError("The repository directory {0} is not specified. or its format is wrong".format(repo_dir))
-        return_code, output, error = self.git.run(['pull','origin', 'submodule'], directory=repo_dir)
+        return_code, output, error = self.git.run(['pull','origin', 'last_submodule'], directory=repo_dir)
 
         if return_code == 0:
             return output.strip()
