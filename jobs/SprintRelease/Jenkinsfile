@@ -27,7 +27,7 @@ node{
             def submodule = load("jobs/SprintRelease/update_submodule.groovy")
             try{
                 stage("Check JIRA"){
-                    load("jobs/SprintRelease/check_jira.groovy")
+                    //load("jobs/SprintRelease/check_jira.groovy")
                 }
 
                 // If MANIFEST_FILE_URL is not defined, the value of "${env.MANIFEST_FILE_URL}" is "null"
@@ -36,40 +36,40 @@ node{
                     stage("Create Manifest"){
                         // The script create_manifest.groovy will upload a manifest file to bintray
                         // and save the download link in variable : env.MANIFEST_FILE_URL
-                        load("jobs/create_manifest/create_manifest.groovy")
+                        //load("jobs/create_manifest/create_manifest.groovy")
                     }
                 }
 
                 if(JUMP_VERSION == "true"){
-                    load("jobs/SprintRelease/bump_version.groovy")
+                    //load("jobs/SprintRelease/bump_version.groovy")
                 }
                 
                   submodule.submodule("update");
 
                 def manifest_name=env.MANIFEST_FILE_URL.tokenize('/')[-1]
-                currentBuild.description = "<a href=${env.MANIFEST_FILE_URL}>${manifest_name}</a>"
+                //currentBuild.description = "<a href=${env.MANIFEST_FILE_URL}>${manifest_name}</a>"
 
-                shareMethod.downloadManifest(env.MANIFEST_FILE_URL, manifest_name)
-                stash name: "sprint_release_manifest", includes: "${manifest_name}"
+                //shareMethod.downloadManifest(env.MANIFEST_FILE_URL, manifest_name)
+                //stash name: "sprint_release_manifest", includes: "${manifest_name}"
                 env.stash_manifest_name = "sprint_release_manifest"
                 env.stash_manifest_path = "${manifest_name}"
   
-                def repo_dir = pwd()
-                def TESTS = "${env.TESTS}"
+                //def repo_dir = pwd()
+                //def TESTS = "${env.TESTS}"
                 def test_type = "manifest"
                 // Create an instance of UnitTest/UnitTest.groovy   
                 def unit_test = load("jobs/UnitTest/UnitTest.groovy")
                 // Create an instance of FunctionTest/FunctionTest.groovy
-                def function_test = load("jobs/FunctionTest/FunctionTest.groovy")
-                def source_based_test = load("jobs/FunctionTest/SourceBasedTest.groovy")
+                //def function_test = load("jobs/FunctionTest/FunctionTest.groovy")
+                //def source_based_test = load("jobs/FunctionTest/SourceBasedTest.groovy")
                 try{
                     stage("Unit Test"){
                         // Call the function runTest to run unit test
-                        unit_test.runTest(env.stash_manifest_name, env.stash_manifest_path, repo_dir)
+                        unit_test.runTest(env.stash_manifest_name, env.stash_manifest_path, None)
                     }
                     stage("Function Test"){
                         // Run function test
-                        source_based_test.runTests(function_test)
+                        //source_based_test.runTests(function_test)
                     }
                 }catch(Exception e){
 
@@ -78,15 +78,15 @@ node{
                  } 
                  
                  finally{
-                    unit_test.archiveArtifactsToTarget("UnitTest")
-                    source_based_test.archiveArtifacts(function_test)
+                    //unit_test.archiveArtifactsToTarget("UnitTest")
+                    //source_based_test.archiveArtifacts(function_test)
                 }
-                Boolean create_tag = TAG.toBoolean()
-                Boolean publish = PUBLISH.toBoolean()
-                shareMethod.buildAndPublish(publish, create_tag, repo_dir)
-                currentBuild.result="SUCCESS"
+                //Boolean create_tag = TAG.toBoolean()
+               // Boolean publish = PUBLISH.toBoolean()
+                //shareMethod.buildAndPublish(publish, create_tag, repo_dir)
+                //currentBuild.result="SUCCESS"
             } finally{
-                shareMethod.sendResult(true, true)
+                //shareMethod.sendResult(true, true)
             }
         }
     }

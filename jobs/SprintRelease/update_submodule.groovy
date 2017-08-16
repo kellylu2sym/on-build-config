@@ -16,7 +16,7 @@ def submodule(String operation)
         }
     
         withCredentials([
-            usernameColonPassword(credentialsId: 'GITHUB_USER_PASSWORD_OF_JENKINSRHD',
+            usernameColonPassword(credentialsId: 'GITHUB_USER_PASSWORD_OF_JENKINSRHD_KELLY',
                                   variable: 'JENKINSRHD_GITHUB_CREDS'),
             usernamePassword(credentialsId: 'a94afe79-82f5-495a-877c-183567c51e0b', 
                              passwordVariable: 'BINTRAY_API_KEY', 
@@ -29,13 +29,13 @@ def submodule(String operation)
                         timeout(5){
                             sh '''#!/bin/bash -ex
                             # Checkout code according to manifest file
-                            curl --user $BINTRAY_USERNAME:$BINTRAY_API_KEY -L "$MANIFEST_FILE_URL" -o rackhd-manifest
+                            #curl --user $BINTRAY_USERNAME:$BINTRAY_API_KEY -L "$MANIFEST_FILE_URL" -o rackhd-manifest
                             pwd
                             ls -al
                             ./build-config/build-release-tools/HWIMO-BUILD build-config/build-release-tools/application/reprove.py \
-                            --manifest rackhd-manifest \
+                            --manifest build-config/rackhd-manifest \
                             --builddir b \
-                            --git-credential https://github.com,JENKINSRHD_GITHUB_CREDS \
+                            --git-credential https://github.com/kellylu2sym,JENKINSRHD_GITHUB_CREDS \
                             --jobs 8 \
                             --force \
                             checkout
@@ -52,7 +52,7 @@ def submodule(String operation)
                             --manifest build-config/rackhd-manifest \
                             --publish \
                             --version ${tag_name}\
-                            --git-credential https://github.com,JENKINSRHD_GITHUB_CREDS
+                            --git-credential https://github.com/kellylu2sym,JENKINSRHD_GITHUB_CREDS
                             '''
                         }
                     }
@@ -61,18 +61,18 @@ def submodule(String operation)
             stage("Update Manifest"){
                 retry(retry_times){
                     timeout(3){
-                        sh './build-config/jobs/SprintRelease/update_manifest.sh'
+                       // sh './build-config/jobs/SprintRelease/update_manifest.sh'
                     }
                 }
                 // inject properties file as environment variables
                 if(fileExists ('downstream_file')) {
-                    def props = readProperties file: 'downstream_file';
-                    if(props['MANIFEST_FILE_URL']) {
-                        env.MANIFEST_FILE_URL = "${props.MANIFEST_FILE_URL}";
-                    }
-                    else{
-                        error("Failed to Update manifest")
-                    }
+               //     def props = readProperties file: 'downstream_file';
+                //    if(props['MANIFEST_FILE_URL']) {
+                //        env.MANIFEST_FILE_URL = "${props.MANIFEST_FILE_URL}";
+                 //   }
+                  //  else{
+                    //    error("Failed to Update manifest")
+                   // }
                 }
             }
         }
