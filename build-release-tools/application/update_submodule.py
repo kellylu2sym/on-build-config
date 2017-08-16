@@ -107,8 +107,10 @@ def main():
                 for key in submodules_list:
                     commit_id = get_manifest_commit_id(key,manifest)
                     if commit_id != None:
-                        revert_dir = repo_dir+"/"+key
-                        repo_operator.checkout_to_commit(revert_dir,commit_id)
+                        sub_dir = repo_dir+"/"+key
+                        repo_operator.checkout_to_commit(sub_dir,commit_id)
+                        update_result = repo_operator.get_current_submodule(repo_dir)
+                        print update_result
                 if args.publish:
                     print "start to publish  update submodule in {0}".format(repo_dir)
                     commit_message = "update submodule for new commit {0}".format(args.version)

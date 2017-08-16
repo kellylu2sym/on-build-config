@@ -128,6 +128,7 @@ def main():
                     continue
                 #git pull is used to get the lastest code to make sure push successfully
                 test_info = repo_operator.git_pull(repo_dir)
+                print "git pull"
                 revert_commit_for_submodules_update(repo_dir,repo_operator,args.version)
                 if args.publish:
                     print "start to publish  revert update submodule in {0}".format(repo_dir)
