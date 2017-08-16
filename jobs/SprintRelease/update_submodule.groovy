@@ -65,15 +65,6 @@ def submodule(String operation)
                     }
                 }
                 // inject properties file as environment variables
-                if(fileExists ('downstream_file')) {
-               //     def props = readProperties file: 'downstream_file';
-                //    if(props['MANIFEST_FILE_URL']) {
-                //        env.MANIFEST_FILE_URL = "${props.MANIFEST_FILE_URL}";
-                 //   }
-                  //  else{
-                    //    error("Failed to Update manifest")
-                   // }
-                }
             }
         }
     }
