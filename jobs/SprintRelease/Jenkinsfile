@@ -46,17 +46,17 @@ node{
                 
                   submodule.submodule("update");
 
-                def manifest_name=env.MANIFEST_FILE_URL.tokenize('/')[-1]
+               // def manifest_name=env.MANIFEST_FILE_URL.tokenize('/')[-1]
                 //currentBuild.description = "<a href=${env.MANIFEST_FILE_URL}>${manifest_name}</a>"
 
                 //shareMethod.downloadManifest(env.MANIFEST_FILE_URL, manifest_name)
                 //stash name: "sprint_release_manifest", includes: "${manifest_name}"
-                env.stash_manifest_name = "sprint_release_manifest"
-                env.stash_manifest_path = "${manifest_name}"
+                //env.stash_manifest_name = "sprint_release_manifest"
+               // env.stash_manifest_path = "${manifest_name}"
   
                 //def repo_dir = pwd()
                 //def TESTS = "${env.TESTS}"
-                def test_type = "manifest"
+                //def test_type = "manifest"
                 // Create an instance of UnitTest/UnitTest.groovy   
                 def unit_test = load("jobs/UnitTest/UnitTest.groovy")
                 // Create an instance of FunctionTest/FunctionTest.groovy
