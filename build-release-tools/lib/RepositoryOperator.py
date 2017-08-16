@@ -1,4 +1,3 @@
-                time.sleep(10)
 """
 Module to abstract operations to repository
 """
