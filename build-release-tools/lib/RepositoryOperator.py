@@ -1,3 +1,4 @@
+                time.sleep(10)
 """
 Module to abstract operations to repository
 """
@@ -665,7 +666,7 @@ class RepoOperator(object):
             return output.strip()
         else:
             raise RuntimeError("Unable to update the submodule of {0}".format(repo_dir))
-    def git_pull(self,repo_dir):
+    def git_pull(self,repo_diri,repo_name,branch_name):
         """
         update the reposioty to latest commit and make sure the coming change will push successfully
         :param repo_dir: the directory of the repository
@@ -674,7 +675,7 @@ class RepoOperator(object):
          
         if repo_dir is None or not os.path.isdir(repo_dir):
             raise RuntimeError("The repository directory {0} is not specified. or its format is wrong".format(repo_dir))
-        return_code, output, error = self.git.run(['pull','origin', 'last_submodule'], directory=repo_dir)
+        return_code, output, error = self.git.run(['pull',repo_name, branch_name], directory=repo_dir)
 
         if return_code == 0:
             return output.strip()
