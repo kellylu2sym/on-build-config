@@ -27,6 +27,11 @@ def setTestRepos(test_repos){
 
 def unitTest(repo_name, used_resources){
     // repo_name comes from the global variable test_repos
+    print repo_name
+    if (repo_name =="on-core"){
+         error("There are failed test cases in on-corekkkkkkkkkkkkkkkkkkkkkkkk")
+                        }
+
     def shareMethod = load(repo_dir + "/jobs/ShareMethod.groovy")
     lock(label:label_name,quantity:1){
         String node_name = shareMethod.occupyAvailableLockedResource(label_name, used_resources)

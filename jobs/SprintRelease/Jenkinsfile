@@ -46,13 +46,13 @@ node{
                 
                   submodule.submodule("update");
 
-               // def manifest_name=env.MANIFEST_FILE_URL.tokenize('/')[-1]
+                def manifest_name="rackhd-manifest"
                 //currentBuild.description = "<a href=${env.MANIFEST_FILE_URL}>${manifest_name}</a>"
 
                 //shareMethod.downloadManifest(env.MANIFEST_FILE_URL, manifest_name)
                 //stash name: "sprint_release_manifest", includes: "${manifest_name}"
-                //env.stash_manifest_name = "sprint_release_manifest"
-               // env.stash_manifest_path = "${manifest_name}"
+                env.stash_manifest_name = "sprint_release_manifest"
+                env.stash_manifest_path = "${manifest_name}"
   
                 //def repo_dir = pwd()
                 //def TESTS = "${env.TESTS}"
@@ -64,8 +64,8 @@ node{
                 //def source_based_test = load("jobs/FunctionTest/SourceBasedTest.groovy")
                 try{
                     stage("Unit Test"){
-                        // Call the function runTest to run unit test
-                        unit_test.runTest(env.stash_manifest_name, env.stash_manifest_path, None)
+                        //Call the function runTest to run unit test
+                        unit_test.runTest(env.stash_manifest_name, env.stash_manifest_path, repo_dir)
                     }
                     stage("Function Test"){
                         // Run function test
