@@ -105,6 +105,7 @@ def archiveArtifactsToTarget(target){
 }
 
 def runTest(String manifest_name, String manifest_path, String repo_dir){
+    echo "333333"
     setManifest(manifest_name, manifest_path)
     setRepoDir(repo_dir)
     def used_resources=[]

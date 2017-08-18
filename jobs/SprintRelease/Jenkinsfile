@@ -44,7 +44,7 @@ node{
                     //load("jobs/SprintRelease/bump_version.groovy")
                 }
                 
-                  submodule.submodule("update");
+                  //submodule.submodule("update");
 
                 def manifest_name="rackhd-manifest"
                 //currentBuild.description = "<a href=${env.MANIFEST_FILE_URL}>${manifest_name}</a>"
@@ -64,8 +64,10 @@ node{
                 //def source_based_test = load("jobs/FunctionTest/SourceBasedTest.groovy")
                 try{
                     stage("Unit Test"){
+                        echo "11111111"
                         //Call the function runTest to run unit test
                         unit_test.runTest(env.stash_manifest_name, env.stash_manifest_path, repo_dir)
+			echo "222222"
                     }
                     stage("Function Test"){
                         // Run function test
