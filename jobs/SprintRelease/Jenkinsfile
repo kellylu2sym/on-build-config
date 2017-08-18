@@ -50,11 +50,11 @@ node{
                 //currentBuild.description = "<a href=${env.MANIFEST_FILE_URL}>${manifest_name}</a>"
 
                 //shareMethod.downloadManifest(env.MANIFEST_FILE_URL, manifest_name)
-                //stash name: "sprint_release_manifest", includes: "${manifest_name}"
+                stash name: "sprint_release_manifest", includes: "${manifest_name}"
                 env.stash_manifest_name = "sprint_release_manifest"
                 env.stash_manifest_path = "${manifest_name}"
   
-                //def repo_dir = pwd()
+                def repo_dir = pwd()
                 //def TESTS = "${env.TESTS}"
                 //def test_type = "manifest"
                 // Create an instance of UnitTest/UnitTest.groovy   
@@ -70,6 +70,7 @@ node{
 			echo "222222"
                     }
                     stage("Function Test"){
+                        //echo "in fun test"
                         // Run function test
                         //source_based_test.runTests(function_test)
                     }
