@@ -12,6 +12,11 @@
             "branch": "last_submodule", 
             "commit-id": "c1914182f5499c24bc04544562716dd49f2ed1e0", 
             "repository": "https://github.com/kellylu2sym/RackHD.git"
-        } 
+        },
+        {
+            "branch": "master", 
+            "commit-id": "59039bbc35cdd33d2a3b6f1b23f880e24b352e2c", 
+            "repository": "https://github.com/RackHD/on-http.git"
+        }
     ]
 }
